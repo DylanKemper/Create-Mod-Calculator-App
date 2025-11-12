@@ -30,13 +30,17 @@
         {
             this.btnCalculate = new System.Windows.Forms.Button();
             this.pnlInput = new System.Windows.Forms.Panel();
+            this.lblRecipeDuration = new System.Windows.Forms.Label();
+            this.txtRecipeDuration = new System.Windows.Forms.TextBox();
+            this.lblStackSize = new System.Windows.Forms.Label();
+            this.lblRPM = new System.Windows.Forms.Label();
+            this.lblItemsPerSec = new System.Windows.Forms.Label();
+            this.txtStackSize = new System.Windows.Forms.TextBox();
             this.txtItemsPerSec = new System.Windows.Forms.TextBox();
             this.txtRPM = new System.Windows.Forms.TextBox();
             this.cmbMachines = new System.Windows.Forms.ComboBox();
-            this.txtStackSize = new System.Windows.Forms.TextBox();
-            this.lblItemsPerSec = new System.Windows.Forms.Label();
-            this.lblRPM = new System.Windows.Forms.Label();
-            this.lblStackSize = new System.Windows.Forms.Label();
+            this.lblInputDelay = new System.Windows.Forms.Label();
+            this.txtInputDelay = new System.Windows.Forms.TextBox();
             this.pnlInput.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,10 +52,15 @@
             this.btnCalculate.TabIndex = 0;
             this.btnCalculate.Text = "Calculate";
             this.btnCalculate.UseVisualStyleBackColor = true;
+            this.btnCalculate.Click += new System.EventHandler(this.btnCalculate_Click);
             // 
             // pnlInput
             // 
             this.pnlInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlInput.Controls.Add(this.lblInputDelay);
+            this.pnlInput.Controls.Add(this.txtInputDelay);
+            this.pnlInput.Controls.Add(this.lblRecipeDuration);
+            this.pnlInput.Controls.Add(this.txtRecipeDuration);
             this.pnlInput.Controls.Add(this.lblStackSize);
             this.pnlInput.Controls.Add(this.lblRPM);
             this.pnlInput.Controls.Add(this.lblItemsPerSec);
@@ -64,6 +73,56 @@
             this.pnlInput.Name = "pnlInput";
             this.pnlInput.Size = new System.Drawing.Size(230, 360);
             this.pnlInput.TabIndex = 1;
+            // 
+            // lblRecipeDuration
+            // 
+            this.lblRecipeDuration.AutoSize = true;
+            this.lblRecipeDuration.Location = new System.Drawing.Point(3, 115);
+            this.lblRecipeDuration.Name = "lblRecipeDuration";
+            this.lblRecipeDuration.Size = new System.Drawing.Size(84, 13);
+            this.lblRecipeDuration.TabIndex = 9;
+            this.lblRecipeDuration.Text = "Recipe Duration";
+            // 
+            // txtRecipeDuration
+            // 
+            this.txtRecipeDuration.Location = new System.Drawing.Point(104, 108);
+            this.txtRecipeDuration.Name = "txtRecipeDuration";
+            this.txtRecipeDuration.Size = new System.Drawing.Size(121, 20);
+            this.txtRecipeDuration.TabIndex = 8;
+            // 
+            // lblStackSize
+            // 
+            this.lblStackSize.AutoSize = true;
+            this.lblStackSize.Location = new System.Drawing.Point(3, 89);
+            this.lblStackSize.Name = "lblStackSize";
+            this.lblStackSize.Size = new System.Drawing.Size(58, 13);
+            this.lblStackSize.TabIndex = 7;
+            this.lblStackSize.Text = "Stack Size";
+            // 
+            // lblRPM
+            // 
+            this.lblRPM.AutoSize = true;
+            this.lblRPM.Location = new System.Drawing.Point(3, 63);
+            this.lblRPM.Name = "lblRPM";
+            this.lblRPM.Size = new System.Drawing.Size(31, 13);
+            this.lblRPM.TabIndex = 6;
+            this.lblRPM.Text = "RPM";
+            // 
+            // lblItemsPerSec
+            // 
+            this.lblItemsPerSec.AutoSize = true;
+            this.lblItemsPerSec.Location = new System.Drawing.Point(3, 37);
+            this.lblItemsPerSec.Name = "lblItemsPerSec";
+            this.lblItemsPerSec.Size = new System.Drawing.Size(54, 13);
+            this.lblItemsPerSec.TabIndex = 5;
+            this.lblItemsPerSec.Text = "Items/sec";
+            // 
+            // txtStackSize
+            // 
+            this.txtStackSize.Location = new System.Drawing.Point(104, 82);
+            this.txtStackSize.Name = "txtStackSize";
+            this.txtStackSize.Size = new System.Drawing.Size(121, 20);
+            this.txtStackSize.TabIndex = 4;
             // 
             // txtItemsPerSec
             // 
@@ -88,40 +147,23 @@
             this.cmbMachines.Name = "cmbMachines";
             this.cmbMachines.Size = new System.Drawing.Size(141, 21);
             this.cmbMachines.TabIndex = 1;
+            this.cmbMachines.SelectedIndexChanged += new System.EventHandler(this.cmbMachines_SelectedIndexChanged_1);
             // 
-            // txtStackSize
+            // lblInputDelay
             // 
-            this.txtStackSize.Location = new System.Drawing.Point(104, 82);
-            this.txtStackSize.Name = "txtStackSize";
-            this.txtStackSize.Size = new System.Drawing.Size(121, 20);
-            this.txtStackSize.TabIndex = 4;
+            this.lblInputDelay.AutoSize = true;
+            this.lblInputDelay.Location = new System.Drawing.Point(3, 141);
+            this.lblInputDelay.Name = "lblInputDelay";
+            this.lblInputDelay.Size = new System.Drawing.Size(61, 13);
+            this.lblInputDelay.TabIndex = 11;
+            this.lblInputDelay.Text = "Input Delay";
             // 
-            // lblItemsPerSec
+            // txtInputDelay
             // 
-            this.lblItemsPerSec.AutoSize = true;
-            this.lblItemsPerSec.Location = new System.Drawing.Point(3, 37);
-            this.lblItemsPerSec.Name = "lblItemsPerSec";
-            this.lblItemsPerSec.Size = new System.Drawing.Size(54, 13);
-            this.lblItemsPerSec.TabIndex = 5;
-            this.lblItemsPerSec.Text = "Items/sec";
-            // 
-            // lblRPM
-            // 
-            this.lblRPM.AutoSize = true;
-            this.lblRPM.Location = new System.Drawing.Point(3, 63);
-            this.lblRPM.Name = "lblRPM";
-            this.lblRPM.Size = new System.Drawing.Size(31, 13);
-            this.lblRPM.TabIndex = 6;
-            this.lblRPM.Text = "RPM";
-            // 
-            // lblStackSize
-            // 
-            this.lblStackSize.AutoSize = true;
-            this.lblStackSize.Location = new System.Drawing.Point(3, 89);
-            this.lblStackSize.Name = "lblStackSize";
-            this.lblStackSize.Size = new System.Drawing.Size(58, 13);
-            this.lblStackSize.TabIndex = 7;
-            this.lblStackSize.Text = "Stack Size";
+            this.txtInputDelay.Location = new System.Drawing.Point(104, 134);
+            this.txtInputDelay.Name = "txtInputDelay";
+            this.txtInputDelay.Size = new System.Drawing.Size(121, 20);
+            this.txtInputDelay.TabIndex = 10;
             // 
             // MainForm
             // 
@@ -148,6 +190,10 @@
         private System.Windows.Forms.Label lblStackSize;
         private System.Windows.Forms.Label lblRPM;
         private System.Windows.Forms.Label lblItemsPerSec;
+        private System.Windows.Forms.Label lblRecipeDuration;
+        private System.Windows.Forms.TextBox txtRecipeDuration;
+        private System.Windows.Forms.Label lblInputDelay;
+        private System.Windows.Forms.TextBox txtInputDelay;
     }
 }
 

@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CrushingWheel.cs" />
     <Compile Include="MechanicalPress.cs" />
     <Compile Include="IMachine.cs" />
     <Compile Include="MachineBase.cs" />
