@@ -45,7 +45,7 @@ The project demonstrates practical use of **object-oriented design, mathematical
 | Namespace | Purpose |
 |------------|----------|
 | `IMachine (Interface)` | Defines required methods (e.g., Solve, Calculate) that all machines must implement. |
-| `MachineBase (Abstract Class)` | Provides shared logic or default behaviors (e.g., clamping, validation). |
+| `MachineBase (Abstract Class)` | Provides shared logic or default behaviors |
 | `MechanicalPress, CrushingWheels, etc.` | Child classes that contain specific formulas and logic for each machine. |
 | `MainForm` | The WinForms user interface that handles user interaction and triggers calculations. |
 
