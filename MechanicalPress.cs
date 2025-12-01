@@ -11,7 +11,7 @@ namespace Create_Mod_Calculator_App
 {
     public class MechanicalPress : MachineBase
     {
-        public override string Name => "mechanical_press";
+        public override string Name => "MechanicalPress";
         public override string[] RequiredInputs => new[] { "ItemsPerSec", "RPM"};
 
         public override double Solve(string targetVariable, Dictionary<string, double> inputs)

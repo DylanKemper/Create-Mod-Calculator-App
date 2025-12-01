@@ -10,7 +10,7 @@ namespace Create_Mod_Calculator_App
 {
     internal class CrushingWheel : MachineBase
     {
-        public override string Name => "crushing_wheel";
+        public override string Name => "CrushingWheel";
 
         public override string[] RequiredInputs => new[] { "ItemsPerSec", "RPM", "StackSize", "RecipeDuration", "InputDelay"};
 

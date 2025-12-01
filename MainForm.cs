@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -12,29 +13,54 @@ namespace Create_Mod_Calculator_App
 {
     public partial class MainForm : Form
     {
-        private List<IMachine> machines = new List<IMachine>();
-        private IMachine selectedMachine;
-        private Dictionary<string, TextBox> inputTextBoxes;
+        private List<MachineBase> machines = new List<MachineBase>();
+        private MachineBase selectedMachine;
+        private Dictionary<string, (TextBox, Label)> inputFields;
         private bool isUpdating = false;
 
         public MainForm()
         {
             InitializeComponent();
-            inputTextBoxes = new Dictionary<string, TextBox>
+            this.Text = "Create Mod Calculator";
+            this.ClientSize = new Size(500, 550);
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.StartPosition = FormStartPosition.CenterScreen;
+            inputFields = new Dictionary<string, (TextBox, Label)>
             {
-                { "RPM", txtRPM },
-                { "ItemsPerSec", txtItemsPerSec },
-                { "StackSize", txtStackSize },
-                { "RecipeDuration", txtRecipeDuration },
-                { "InputDelay", txtInputDelay }
+                { "RPM", (txtRPM, lblRPM) },
+                { "ItemsPerSec", (txtItemsPerSec, lblItemsPerSec) },
+                { "StackSize", (txtStackSize, lblStackSize) },
+                { "RecipeDuration", (txtRecipeDuration, lblRecipeDuration) },
+                { "InputDelay", (txtInputDelay, lblInputDelay) }
             };
 
-            machines.Add(new MechanicalPress());
-            machines.Add(new CrushingWheel());
+            /*
+             * Gets a list of all the classes that inherit from MachineBase and therefor implement the IMachine interface.
+             * This list will then include all concrete classes.
+             * This list is then looped through to extract 
+             */
+            // Turn into a method to call before/after InitializeComponent()
+            var machineTypes = Assembly.GetExecutingAssembly().GetTypes().Where(t => t.IsSubclassOf(typeof(MachineBase))).ToList();
+            foreach (var machineType in machineTypes)
+            {
+                var machine = (MachineBase)Activator.CreateInstance(machineType);
+                machines.Add(machine);
+            }
+
             cmbMachines.DataSource = machines;
             cmbMachines.DisplayMember = "Name";
-            selectedMachine = cmbMachines.SelectedItem as IMachine;
+            selectedMachine = cmbMachines.SelectedItem as MachineBase;
             UpdateFieldAvailability();
+        }
+
+        public void AddMachines()
+        {
+            // Read Json 
+            string machineName = "";
+            Type machineType = Type.GetType("MechanicalPress");
+            MachineBase activator = (MachineBase)Activator.CreateInstance(machineType);
+            machines.Add(activator);
         }
 
         private void txtItemsPerSec_TextChanged(object sender, EventArgs e)
@@ -67,9 +93,9 @@ namespace Create_Mod_Calculator_App
                     if (varName == outputVariable)
                         continue;
 
-                    if (inputTextBoxes.TryGetValue(varName, out var textBox))
+                    if (inputFields.TryGetValue(varName, out var textBox))
                     {
-                        if (double.TryParse(textBox.Text, out double val))
+                        if (double.TryParse(textBox.Item1.Text, out double val))
                             inputs[varName] = val;
                     }
                 }
@@ -104,7 +130,7 @@ namespace Create_Mod_Calculator_App
 
         private void cmbMachines_SelectedIndexChanged_1(object sender, EventArgs e)
         {
-            selectedMachine = cmbMachines.SelectedItem as IMachine;
+            selectedMachine = cmbMachines.SelectedItem as MachineBase;
             UpdateFieldAvailability();
             ClearAllFields();
         }
@@ -139,7 +165,7 @@ namespace Create_Mod_Calculator_App
             else
             {
                 textBox.BackColor = System.Drawing.SystemColors.Control;
-                textBox.ForeColor = System.Drawing.SystemColors.GrayText;
+                textBox.Hide();
                 textBox.Text = ""; // Clear disabled fields
             }
         }
@@ -161,6 +187,16 @@ namespace Create_Mod_Calculator_App
         }
 
         private void btnCalculate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }

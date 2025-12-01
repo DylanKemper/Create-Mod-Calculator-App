@@ -28,163 +28,191 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnCalculate = new System.Windows.Forms.Button();
             this.pnlInput = new System.Windows.Forms.Panel();
+            this.lblInputDelay = new System.Windows.Forms.Label();
+            this.txtInputDelay = new System.Windows.Forms.TextBox();
             this.lblRecipeDuration = new System.Windows.Forms.Label();
             this.txtRecipeDuration = new System.Windows.Forms.TextBox();
             this.lblStackSize = new System.Windows.Forms.Label();
             this.lblRPM = new System.Windows.Forms.Label();
             this.lblItemsPerSec = new System.Windows.Forms.Label();
             this.txtStackSize = new System.Windows.Forms.TextBox();
-            this.txtItemsPerSec = new System.Windows.Forms.TextBox();
             this.txtRPM = new System.Windows.Forms.TextBox();
             this.cmbMachines = new System.Windows.Forms.ComboBox();
-            this.lblInputDelay = new System.Windows.Forms.Label();
-            this.txtInputDelay = new System.Windows.Forms.TextBox();
+            this.lblHeading = new System.Windows.Forms.Label();
+            this.txtItemsPerSec = new System.Windows.Forms.TextBox();
             this.pnlInput.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btnCalculate
-            // 
-            this.btnCalculate.Location = new System.Drawing.Point(150, 3);
-            this.btnCalculate.Name = "btnCalculate";
-            this.btnCalculate.Size = new System.Drawing.Size(75, 23);
-            this.btnCalculate.TabIndex = 0;
-            this.btnCalculate.Text = "Calculate";
-            this.btnCalculate.UseVisualStyleBackColor = true;
-            this.btnCalculate.Click += new System.EventHandler(this.btnCalculate_Click);
-            // 
             // pnlInput
             // 
+            this.pnlInput.AutoSize = true;
+            this.pnlInput.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.pnlInput.BackColor = System.Drawing.Color.RosyBrown;
             this.pnlInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlInput.Controls.Add(this.txtItemsPerSec);
+            this.pnlInput.Controls.Add(this.lblItemsPerSec);
+            this.pnlInput.Controls.Add(this.lblHeading);
             this.pnlInput.Controls.Add(this.lblInputDelay);
             this.pnlInput.Controls.Add(this.txtInputDelay);
             this.pnlInput.Controls.Add(this.lblRecipeDuration);
             this.pnlInput.Controls.Add(this.txtRecipeDuration);
             this.pnlInput.Controls.Add(this.lblStackSize);
             this.pnlInput.Controls.Add(this.lblRPM);
-            this.pnlInput.Controls.Add(this.lblItemsPerSec);
             this.pnlInput.Controls.Add(this.txtStackSize);
-            this.pnlInput.Controls.Add(this.txtItemsPerSec);
             this.pnlInput.Controls.Add(this.txtRPM);
             this.pnlInput.Controls.Add(this.cmbMachines);
-            this.pnlInput.Controls.Add(this.btnCalculate);
-            this.pnlInput.Location = new System.Drawing.Point(12, 12);
+            this.pnlInput.Location = new System.Drawing.Point(13, 13);
+            this.pnlInput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlInput.Name = "pnlInput";
-            this.pnlInput.Size = new System.Drawing.Size(230, 360);
+            this.pnlInput.Padding = new System.Windows.Forms.Padding(8);
+            this.pnlInput.Size = new System.Drawing.Size(369, 265);
             this.pnlInput.TabIndex = 1;
+            // 
+            // lblInputDelay
+            // 
+            this.lblInputDelay.AutoSize = true;
+            this.lblInputDelay.Location = new System.Drawing.Point(65, 227);
+            this.lblInputDelay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblInputDelay.Name = "lblInputDelay";
+            this.lblInputDelay.Size = new System.Drawing.Size(102, 24);
+            this.lblInputDelay.TabIndex = 11;
+            this.lblInputDelay.Text = "Input Delay";
+            // 
+            // txtInputDelay
+            // 
+            this.txtInputDelay.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtInputDelay.Location = new System.Drawing.Point(174, 227);
+            this.txtInputDelay.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtInputDelay.Multiline = true;
+            this.txtInputDelay.Name = "txtInputDelay";
+            this.txtInputDelay.Size = new System.Drawing.Size(181, 24);
+            this.txtInputDelay.TabIndex = 10;
             // 
             // lblRecipeDuration
             // 
             this.lblRecipeDuration.AutoSize = true;
-            this.lblRecipeDuration.Location = new System.Drawing.Point(3, 115);
+            this.lblRecipeDuration.Location = new System.Drawing.Point(31, 195);
+            this.lblRecipeDuration.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRecipeDuration.Name = "lblRecipeDuration";
-            this.lblRecipeDuration.Size = new System.Drawing.Size(84, 13);
+            this.lblRecipeDuration.Size = new System.Drawing.Size(136, 24);
             this.lblRecipeDuration.TabIndex = 9;
             this.lblRecipeDuration.Text = "Recipe Duration";
             // 
             // txtRecipeDuration
             // 
-            this.txtRecipeDuration.Location = new System.Drawing.Point(104, 108);
+            this.txtRecipeDuration.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtRecipeDuration.Location = new System.Drawing.Point(174, 195);
+            this.txtRecipeDuration.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtRecipeDuration.Multiline = true;
             this.txtRecipeDuration.Name = "txtRecipeDuration";
-            this.txtRecipeDuration.Size = new System.Drawing.Size(121, 20);
+            this.txtRecipeDuration.Size = new System.Drawing.Size(181, 24);
             this.txtRecipeDuration.TabIndex = 8;
             // 
             // lblStackSize
             // 
             this.lblStackSize.AutoSize = true;
-            this.lblStackSize.Location = new System.Drawing.Point(3, 89);
+            this.lblStackSize.Location = new System.Drawing.Point(75, 163);
+            this.lblStackSize.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblStackSize.Name = "lblStackSize";
-            this.lblStackSize.Size = new System.Drawing.Size(58, 13);
+            this.lblStackSize.Size = new System.Drawing.Size(92, 24);
             this.lblStackSize.TabIndex = 7;
             this.lblStackSize.Text = "Stack Size";
             // 
             // lblRPM
             // 
             this.lblRPM.AutoSize = true;
-            this.lblRPM.Location = new System.Drawing.Point(3, 63);
+            this.lblRPM.Location = new System.Drawing.Point(127, 131);
+            this.lblRPM.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRPM.Name = "lblRPM";
-            this.lblRPM.Size = new System.Drawing.Size(31, 13);
+            this.lblRPM.Size = new System.Drawing.Size(40, 24);
             this.lblRPM.TabIndex = 6;
             this.lblRPM.Text = "RPM";
             // 
             // lblItemsPerSec
             // 
             this.lblItemsPerSec.AutoSize = true;
-            this.lblItemsPerSec.Location = new System.Drawing.Point(3, 37);
+            this.lblItemsPerSec.Location = new System.Drawing.Point(73, 100);
+            this.lblItemsPerSec.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblItemsPerSec.Name = "lblItemsPerSec";
-            this.lblItemsPerSec.Size = new System.Drawing.Size(54, 13);
+            this.lblItemsPerSec.Size = new System.Drawing.Size(94, 24);
             this.lblItemsPerSec.TabIndex = 5;
             this.lblItemsPerSec.Text = "Items/sec";
             // 
             // txtStackSize
             // 
-            this.txtStackSize.Location = new System.Drawing.Point(104, 82);
+            this.txtStackSize.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtStackSize.Location = new System.Drawing.Point(174, 163);
+            this.txtStackSize.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtStackSize.Multiline = true;
             this.txtStackSize.Name = "txtStackSize";
-            this.txtStackSize.Size = new System.Drawing.Size(121, 20);
+            this.txtStackSize.Size = new System.Drawing.Size(181, 24);
             this.txtStackSize.TabIndex = 4;
-            // 
-            // txtItemsPerSec
-            // 
-            this.txtItemsPerSec.Location = new System.Drawing.Point(104, 30);
-            this.txtItemsPerSec.Name = "txtItemsPerSec";
-            this.txtItemsPerSec.Size = new System.Drawing.Size(121, 20);
-            this.txtItemsPerSec.TabIndex = 3;
-            this.txtItemsPerSec.TextChanged += new System.EventHandler(this.txtItemsPerSec_TextChanged);
             // 
             // txtRPM
             // 
-            this.txtRPM.Location = new System.Drawing.Point(104, 56);
+            this.txtRPM.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtRPM.Location = new System.Drawing.Point(174, 131);
+            this.txtRPM.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtRPM.Multiline = true;
             this.txtRPM.Name = "txtRPM";
-            this.txtRPM.Size = new System.Drawing.Size(121, 20);
+            this.txtRPM.Size = new System.Drawing.Size(181, 24);
             this.txtRPM.TabIndex = 2;
             this.txtRPM.TextChanged += new System.EventHandler(this.txtRPM_TextChanged);
             // 
             // cmbMachines
             // 
+            this.cmbMachines.Cursor = System.Windows.Forms.Cursors.Default;
             this.cmbMachines.FormattingEnabled = true;
-            this.cmbMachines.Location = new System.Drawing.Point(3, 3);
+            this.cmbMachines.Location = new System.Drawing.Point(8, 67);
+            this.cmbMachines.Margin = new System.Windows.Forms.Padding(4);
             this.cmbMachines.Name = "cmbMachines";
-            this.cmbMachines.Size = new System.Drawing.Size(141, 21);
+            this.cmbMachines.Size = new System.Drawing.Size(347, 26);
             this.cmbMachines.TabIndex = 1;
             this.cmbMachines.SelectedIndexChanged += new System.EventHandler(this.cmbMachines_SelectedIndexChanged_1);
             // 
-            // lblInputDelay
+            // lblHeading
             // 
-            this.lblInputDelay.AutoSize = true;
-            this.lblInputDelay.Location = new System.Drawing.Point(3, 141);
-            this.lblInputDelay.Name = "lblInputDelay";
-            this.lblInputDelay.Size = new System.Drawing.Size(61, 13);
-            this.lblInputDelay.TabIndex = 11;
-            this.lblInputDelay.Text = "Input Delay";
+            this.lblHeading.AutoSize = true;
+            this.lblHeading.Font = new System.Drawing.Font("Minecraftia", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHeading.Location = new System.Drawing.Point(11, 21);
+            this.lblHeading.Name = "lblHeading";
+            this.lblHeading.Size = new System.Drawing.Size(342, 42);
+            this.lblHeading.TabIndex = 12;
+            this.lblHeading.Text = "Create Mod Calculator";
+            this.lblHeading.Click += new System.EventHandler(this.label1_Click);
             // 
-            // txtInputDelay
+            // txtItemsPerSec
             // 
-            this.txtInputDelay.Location = new System.Drawing.Point(104, 134);
-            this.txtInputDelay.Name = "txtInputDelay";
-            this.txtInputDelay.Size = new System.Drawing.Size(121, 20);
-            this.txtInputDelay.TabIndex = 10;
+            this.txtItemsPerSec.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtItemsPerSec.Location = new System.Drawing.Point(174, 100);
+            this.txtItemsPerSec.Multiline = true;
+            this.txtItemsPerSec.Name = "txtItemsPerSec";
+            this.txtItemsPerSec.Size = new System.Drawing.Size(181, 24);
+            this.txtItemsPerSec.TabIndex = 13;
+            this.txtItemsPerSec.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(733, 384);
+            this.ClientSize = new System.Drawing.Size(538, 559);
             this.Controls.Add(this.pnlInput);
+            this.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.Font = new System.Drawing.Font("Minecraftia", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "MainForm";
             this.Text = "Create Mod Calculator";
             this.pnlInput.ResumeLayout(false);
             this.pnlInput.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnCalculate;
         private System.Windows.Forms.Panel pnlInput;
         private System.Windows.Forms.ComboBox cmbMachines;
-        private System.Windows.Forms.TextBox txtItemsPerSec;
         private System.Windows.Forms.TextBox txtRPM;
         private System.Windows.Forms.TextBox txtStackSize;
         private System.Windows.Forms.Label lblStackSize;
@@ -194,6 +222,8 @@
         private System.Windows.Forms.TextBox txtRecipeDuration;
         private System.Windows.Forms.Label lblInputDelay;
         private System.Windows.Forms.TextBox txtInputDelay;
+        private System.Windows.Forms.Label lblHeading;
+        private System.Windows.Forms.TextBox txtItemsPerSec;
     }
 }
 
