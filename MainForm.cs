@@ -132,63 +132,35 @@ namespace Create_Mod_Calculator_App
         {
             selectedMachine = cmbMachines.SelectedItem as MachineBase;
             UpdateFieldAvailability();
-            ClearAllFields();
         }
 
         private void UpdateFieldAvailability()
         {
             if (selectedMachine == null) return;
 
-            var requiredInputs = selectedMachine.RequiredInputs;
-
-            // Enable/disable textboxes based on machine requirements
-            txtRPM.Enabled = requiredInputs.Contains("RPM");
-            txtItemsPerSec.Enabled = requiredInputs.Contains("ItemsPerSec");
-            txtStackSize.Enabled = requiredInputs.Contains("StackSize");
-            txtRecipeDuration.Enabled = requiredInputs.Contains("RecipeDuration");
-            txtInputDelay.Enabled = requiredInputs.Contains("InputDelay");
-
-            // Update visual styling for disabled fields
-            UpdateFieldStyling(txtRPM, txtRPM.Enabled);
-            UpdateFieldStyling(txtItemsPerSec, txtItemsPerSec.Enabled);
-            UpdateFieldStyling(txtStackSize, txtStackSize.Enabled);
-            UpdateFieldStyling(txtRecipeDuration, txtRecipeDuration.Enabled);
-            UpdateFieldStyling(txtInputDelay, txtInputDelay.Enabled);
-        }
-        private void UpdateFieldStyling(TextBox textBox, bool enabled)
-        {
-            if (enabled)
+            foreach (var kvp in inputFields)
             {
-                textBox.BackColor = System.Drawing.SystemColors.Window;
-                textBox.ForeColor = System.Drawing.SystemColors.WindowText;
+                var (textBox, label) = kvp.Value;
+
+                label.Visible = true;
+                textBox.Visible = true;
+                textBox.Enabled = true;
             }
-            else
+
+            foreach (var kvp in inputFields)
             {
-                textBox.BackColor = System.Drawing.SystemColors.Control;
-                textBox.Hide();
-                textBox.Text = ""; // Clear disabled fields
+                string input = kvp.Key;
+                var (textBox, label) = kvp.Value;
+
+                bool required = selectedMachine.RequiredInputs.Contains(input);
+
+                label.Visible = required;
+                textBox.Visible = required;
+                textBox.Enabled = required;
+
+                if (!required)
+                    textBox.Text = "";
             }
-        }
-
-        private void ClearAllFields()
-        {
-            txtRPM.Clear();
-            txtItemsPerSec.Clear();
-            txtStackSize.Clear();
-            txtRecipeDuration.Clear();
-            txtInputDelay.Clear();
-
-            // Reset background colors
-            txtRPM.BackColor = System.Drawing.SystemColors.Window;
-            txtItemsPerSec.BackColor = System.Drawing.SystemColors.Window;
-            txtStackSize.BackColor = System.Drawing.SystemColors.Window;
-            txtRecipeDuration.BackColor = System.Drawing.SystemColors.Window;
-            txtInputDelay.BackColor = System.Drawing.SystemColors.Window;
-        }
-
-        private void btnCalculate_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void label1_Click(object sender, EventArgs e)
