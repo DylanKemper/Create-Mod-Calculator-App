@@ -63,7 +63,7 @@ namespace Create_Mod_Calculator_App
                 return outputItemsPerSec - itemsPerSec;
             };
 
-            return Math.Ceiling(Brent.FindRoot(func, 0, 256, 1e-6));
+            return Math.Ceiling(Brent.FindRoot(func, 0, 256, 1e-8));
         }
     }
 }

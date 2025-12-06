@@ -54,15 +54,6 @@ namespace Create_Mod_Calculator_App
             UpdateFieldAvailability();
         }
 
-        public void AddMachines()
-        {
-            // Read Json 
-            string machineName = "";
-            Type machineType = Type.GetType("MechanicalPress");
-            MachineBase activator = (MachineBase)Activator.CreateInstance(machineType);
-            machines.Add(activator);
-        }
-
         private void txtItemsPerSec_TextChanged(object sender, EventArgs e)
         {
             UpdateCalculation("ItemsPerSec", txtItemsPerSec.Text, "RPM", txtRPM);
@@ -164,11 +155,6 @@ namespace Create_Mod_Calculator_App
         }
 
         private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }

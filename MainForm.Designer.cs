@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             this.pnlInput = new System.Windows.Forms.Panel();
+            this.txtItemsPerSec = new System.Windows.Forms.TextBox();
+            this.lblItemsPerSec = new System.Windows.Forms.Label();
+            this.lblHeading = new System.Windows.Forms.Label();
             this.lblInputDelay = new System.Windows.Forms.Label();
             this.txtInputDelay = new System.Windows.Forms.TextBox();
             this.lblRecipeDuration = new System.Windows.Forms.Label();
             this.txtRecipeDuration = new System.Windows.Forms.TextBox();
             this.lblStackSize = new System.Windows.Forms.Label();
             this.lblRPM = new System.Windows.Forms.Label();
-            this.lblItemsPerSec = new System.Windows.Forms.Label();
             this.txtStackSize = new System.Windows.Forms.TextBox();
             this.txtRPM = new System.Windows.Forms.TextBox();
             this.cmbMachines = new System.Windows.Forms.ComboBox();
-            this.lblHeading = new System.Windows.Forms.Label();
-            this.txtItemsPerSec = new System.Windows.Forms.TextBox();
             this.pnlInput.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,11 +63,42 @@
             this.pnlInput.Controls.Add(this.txtRPM);
             this.pnlInput.Controls.Add(this.cmbMachines);
             this.pnlInput.Location = new System.Drawing.Point(13, 13);
-            this.pnlInput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlInput.Margin = new System.Windows.Forms.Padding(4);
             this.pnlInput.Name = "pnlInput";
             this.pnlInput.Padding = new System.Windows.Forms.Padding(8);
             this.pnlInput.Size = new System.Drawing.Size(369, 265);
             this.pnlInput.TabIndex = 1;
+            // 
+            // txtItemsPerSec
+            // 
+            this.txtItemsPerSec.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtItemsPerSec.Location = new System.Drawing.Point(174, 100);
+            this.txtItemsPerSec.Multiline = true;
+            this.txtItemsPerSec.Name = "txtItemsPerSec";
+            this.txtItemsPerSec.Size = new System.Drawing.Size(181, 24);
+            this.txtItemsPerSec.TabIndex = 13;
+            this.txtItemsPerSec.TextChanged += new System.EventHandler(this.txtItemsPerSec_TextChanged);
+            // 
+            // lblItemsPerSec
+            // 
+            this.lblItemsPerSec.AutoSize = true;
+            this.lblItemsPerSec.Location = new System.Drawing.Point(73, 100);
+            this.lblItemsPerSec.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblItemsPerSec.Name = "lblItemsPerSec";
+            this.lblItemsPerSec.Size = new System.Drawing.Size(94, 24);
+            this.lblItemsPerSec.TabIndex = 5;
+            this.lblItemsPerSec.Text = "Items/sec";
+            // 
+            // lblHeading
+            // 
+            this.lblHeading.AutoSize = true;
+            this.lblHeading.Font = new System.Drawing.Font("Minecraftia", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHeading.Location = new System.Drawing.Point(11, 21);
+            this.lblHeading.Name = "lblHeading";
+            this.lblHeading.Size = new System.Drawing.Size(342, 42);
+            this.lblHeading.TabIndex = 12;
+            this.lblHeading.Text = "Create Mod Calculator";
+            this.lblHeading.Click += new System.EventHandler(this.label1_Click);
             // 
             // lblInputDelay
             // 
@@ -83,7 +114,7 @@
             // 
             this.txtInputDelay.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtInputDelay.Location = new System.Drawing.Point(174, 227);
-            this.txtInputDelay.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtInputDelay.Margin = new System.Windows.Forms.Padding(4);
             this.txtInputDelay.Multiline = true;
             this.txtInputDelay.Name = "txtInputDelay";
             this.txtInputDelay.Size = new System.Drawing.Size(181, 24);
@@ -103,7 +134,7 @@
             // 
             this.txtRecipeDuration.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtRecipeDuration.Location = new System.Drawing.Point(174, 195);
-            this.txtRecipeDuration.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtRecipeDuration.Margin = new System.Windows.Forms.Padding(4);
             this.txtRecipeDuration.Multiline = true;
             this.txtRecipeDuration.Name = "txtRecipeDuration";
             this.txtRecipeDuration.Size = new System.Drawing.Size(181, 24);
@@ -129,21 +160,11 @@
             this.lblRPM.TabIndex = 6;
             this.lblRPM.Text = "RPM";
             // 
-            // lblItemsPerSec
-            // 
-            this.lblItemsPerSec.AutoSize = true;
-            this.lblItemsPerSec.Location = new System.Drawing.Point(73, 100);
-            this.lblItemsPerSec.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblItemsPerSec.Name = "lblItemsPerSec";
-            this.lblItemsPerSec.Size = new System.Drawing.Size(94, 24);
-            this.lblItemsPerSec.TabIndex = 5;
-            this.lblItemsPerSec.Text = "Items/sec";
-            // 
             // txtStackSize
             // 
             this.txtStackSize.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtStackSize.Location = new System.Drawing.Point(174, 163);
-            this.txtStackSize.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtStackSize.Margin = new System.Windows.Forms.Padding(4);
             this.txtStackSize.Multiline = true;
             this.txtStackSize.Name = "txtStackSize";
             this.txtStackSize.Size = new System.Drawing.Size(181, 24);
@@ -153,7 +174,7 @@
             // 
             this.txtRPM.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtRPM.Location = new System.Drawing.Point(174, 131);
-            this.txtRPM.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtRPM.Margin = new System.Windows.Forms.Padding(4);
             this.txtRPM.Multiline = true;
             this.txtRPM.Name = "txtRPM";
             this.txtRPM.Size = new System.Drawing.Size(181, 24);
@@ -171,27 +192,6 @@
             this.cmbMachines.TabIndex = 1;
             this.cmbMachines.SelectedIndexChanged += new System.EventHandler(this.cmbMachines_SelectedIndexChanged_1);
             // 
-            // lblHeading
-            // 
-            this.lblHeading.AutoSize = true;
-            this.lblHeading.Font = new System.Drawing.Font("Minecraftia", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHeading.Location = new System.Drawing.Point(11, 21);
-            this.lblHeading.Name = "lblHeading";
-            this.lblHeading.Size = new System.Drawing.Size(342, 42);
-            this.lblHeading.TabIndex = 12;
-            this.lblHeading.Text = "Create Mod Calculator";
-            this.lblHeading.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // txtItemsPerSec
-            // 
-            this.txtItemsPerSec.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtItemsPerSec.Location = new System.Drawing.Point(174, 100);
-            this.txtItemsPerSec.Multiline = true;
-            this.txtItemsPerSec.Name = "txtItemsPerSec";
-            this.txtItemsPerSec.Size = new System.Drawing.Size(181, 24);
-            this.txtItemsPerSec.TabIndex = 13;
-            this.txtItemsPerSec.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
@@ -200,7 +200,7 @@
             this.Controls.Add(this.pnlInput);
             this.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.Font = new System.Drawing.Font("Minecraftia", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
             this.Text = "Create Mod Calculator";
             this.pnlInput.ResumeLayout(false);
