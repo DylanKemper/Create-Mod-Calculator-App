@@ -3,55 +3,98 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 
 namespace Create_Mod_Calculator_App
 {
     public partial class MainForm : Form
     {
         private List<MachineBase> machines = new List<MachineBase>();
+        private List<GrindingRecipeDatabase> grindingRecipes;
         private MachineBase selectedMachine;
-        private Dictionary<string, (TextBox, Label)> inputFields;
+        private Dictionary<string, (Control, Label)> inputFields;
         private bool isUpdating = false;
 
         public MainForm()
         {
             InitializeComponent();
-            this.Text = "Create Mod Calculator";
-            this.ClientSize = new Size(500, 550);
-            this.FormBorderStyle = FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
-            this.StartPosition = FormStartPosition.CenterScreen;
-            inputFields = new Dictionary<string, (TextBox, Label)>
+            setupWindow();
+            inputFields = new Dictionary<string, (Control, Label)>
             {
                 { "RPM", (txtRPM, lblRPM) },
                 { "ItemsPerSec", (txtItemsPerSec, lblItemsPerSec) },
                 { "StackSize", (txtStackSize, lblStackSize) },
-                { "RecipeDuration", (txtRecipeDuration, lblRecipeDuration) },
+                { "RecipeDuration", (cmbRecipeDuration, lblRecipeDuration) },
                 { "InputDelay", (txtInputDelay, lblInputDelay) }
             };
 
-            /*
-             * Gets a list of all the classes that inherit from MachineBase and therefor implement the IMachine interface.
-             * This list will then include all concrete classes.
-             * This list is then looped through to extract 
-             */
-            // Turn into a method to call before/after InitializeComponent()
+            populateMachinesComboBox();
+            populateRecipeDurationsComboBox();
+            UpdateFieldAvailability();
+        }
+
+        /*
+         * Gets a list of all the classes that inherit from MachineBase and therefor implement the IMachine interface.
+         * This list will then include all concrete classes.
+         * This list is used to populate cmbMachines
+         */
+        private void populateMachinesComboBox()
+        {
             var machineTypes = Assembly.GetExecutingAssembly().GetTypes().Where(t => t.IsSubclassOf(typeof(MachineBase))).ToList();
             foreach (var machineType in machineTypes)
             {
                 var machine = (MachineBase)Activator.CreateInstance(machineType);
                 machines.Add(machine);
             }
-
             cmbMachines.DataSource = machines;
             cmbMachines.DisplayMember = "Name";
             selectedMachine = cmbMachines.SelectedItem as MachineBase;
-            UpdateFieldAvailability();
+        }
+
+        private void populateRecipeDurationsComboBox()
+        {
+            string jsonPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "recipe_durations.json");
+            string jsonContent = File.ReadAllText(jsonPath);
+            var grindingRecipeDatabase = JsonConvert.DeserializeObject<GrindingRecipeDatabase>(jsonContent);
+            var grindingRecipes = new List<GrindingRecipeItem>();
+
+            foreach (var kvp in grindingRecipeDatabase.RecipeDurations)
+            {
+                int duration = int.Parse(kvp.Key);
+                foreach (string itemName in kvp.Value.Items)
+                {
+                    grindingRecipes.Add(new GrindingRecipeItem
+                    {
+                        Name = itemName,
+                        RecipeDuration = duration
+                    });
+                }
+            }
+
+            grindingRecipes = grindingRecipes.OrderBy(item => item.ToString()).ToList();
+            grindingRecipes.Add(new GrindingRecipeItem
+            {
+                Name = "Other",
+                RecipeDuration = grindingRecipeDatabase.defaultDuration
+            });
+
+            cmbRecipeDuration.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbRecipeDuration.DataSource = grindingRecipes;
+        }
+
+        private void setupWindow()
+        {
+            this.Text = "Create Mod Calculator";
+            this.ClientSize = new Size(500, 550);
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void txtItemsPerSec_TextChanged(object sender, EventArgs e)
@@ -155,6 +198,11 @@ namespace Create_Mod_Calculator_App
         }
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbRecipeDuration_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

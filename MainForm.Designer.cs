@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.pnlInput = new System.Windows.Forms.Panel();
+            this.cmbRecipeDuration = new System.Windows.Forms.ComboBox();
             this.txtItemsPerSec = new System.Windows.Forms.TextBox();
             this.lblItemsPerSec = new System.Windows.Forms.Label();
             this.lblHeading = new System.Windows.Forms.Label();
             this.lblInputDelay = new System.Windows.Forms.Label();
             this.txtInputDelay = new System.Windows.Forms.TextBox();
             this.lblRecipeDuration = new System.Windows.Forms.Label();
-            this.txtRecipeDuration = new System.Windows.Forms.TextBox();
             this.lblStackSize = new System.Windows.Forms.Label();
             this.lblRPM = new System.Windows.Forms.Label();
             this.txtStackSize = new System.Windows.Forms.TextBox();
@@ -50,13 +50,13 @@
             this.pnlInput.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.pnlInput.BackColor = System.Drawing.Color.RosyBrown;
             this.pnlInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlInput.Controls.Add(this.cmbRecipeDuration);
             this.pnlInput.Controls.Add(this.txtItemsPerSec);
             this.pnlInput.Controls.Add(this.lblItemsPerSec);
             this.pnlInput.Controls.Add(this.lblHeading);
             this.pnlInput.Controls.Add(this.lblInputDelay);
             this.pnlInput.Controls.Add(this.txtInputDelay);
             this.pnlInput.Controls.Add(this.lblRecipeDuration);
-            this.pnlInput.Controls.Add(this.txtRecipeDuration);
             this.pnlInput.Controls.Add(this.lblStackSize);
             this.pnlInput.Controls.Add(this.lblRPM);
             this.pnlInput.Controls.Add(this.txtStackSize);
@@ -68,6 +68,18 @@
             this.pnlInput.Padding = new System.Windows.Forms.Padding(8);
             this.pnlInput.Size = new System.Drawing.Size(369, 265);
             this.pnlInput.TabIndex = 1;
+            // 
+            // cmbRecipeDuration
+            // 
+            this.cmbRecipeDuration.Cursor = System.Windows.Forms.Cursors.Default;
+            this.cmbRecipeDuration.DropDownHeight = 128;
+            this.cmbRecipeDuration.FormattingEnabled = true;
+            this.cmbRecipeDuration.IntegralHeight = false;
+            this.cmbRecipeDuration.Location = new System.Drawing.Point(174, 195);
+            this.cmbRecipeDuration.Name = "cmbRecipeDuration";
+            this.cmbRecipeDuration.Size = new System.Drawing.Size(181, 26);
+            this.cmbRecipeDuration.TabIndex = 2;
+            this.cmbRecipeDuration.SelectedIndexChanged += new System.EventHandler(this.cmbRecipeDuration_SelectedIndexChanged);
             // 
             // txtItemsPerSec
             // 
@@ -129,16 +141,6 @@
             this.lblRecipeDuration.Size = new System.Drawing.Size(136, 24);
             this.lblRecipeDuration.TabIndex = 9;
             this.lblRecipeDuration.Text = "Recipe Duration";
-            // 
-            // txtRecipeDuration
-            // 
-            this.txtRecipeDuration.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtRecipeDuration.Location = new System.Drawing.Point(174, 195);
-            this.txtRecipeDuration.Margin = new System.Windows.Forms.Padding(4);
-            this.txtRecipeDuration.Multiline = true;
-            this.txtRecipeDuration.Name = "txtRecipeDuration";
-            this.txtRecipeDuration.Size = new System.Drawing.Size(181, 24);
-            this.txtRecipeDuration.TabIndex = 8;
             // 
             // lblStackSize
             // 
@@ -219,11 +221,11 @@
         private System.Windows.Forms.Label lblRPM;
         private System.Windows.Forms.Label lblItemsPerSec;
         private System.Windows.Forms.Label lblRecipeDuration;
-        private System.Windows.Forms.TextBox txtRecipeDuration;
         private System.Windows.Forms.Label lblInputDelay;
         private System.Windows.Forms.TextBox txtInputDelay;
         private System.Windows.Forms.Label lblHeading;
         private System.Windows.Forms.TextBox txtItemsPerSec;
+        private System.Windows.Forms.ComboBox cmbRecipeDuration;
     }
 }
 
