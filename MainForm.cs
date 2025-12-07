@@ -127,10 +127,9 @@ namespace Create_Mod_Calculator_App
                     if (varName == outputVariable)
                         continue;
 
-                    if (inputFields.TryGetValue(varName, out var textBox))
+                    if (TryGetInputValue(varName, out double val))
                     {
-                        if (double.TryParse(textBox.Item1.Text, out double val))
-                            inputs[varName] = val;
+                        inputs[varName] = val;
                     }
                 }
 
@@ -159,6 +158,33 @@ namespace Create_Mod_Calculator_App
             {
                 isUpdating = false;
             }
+        }
+
+        private bool TryGetInputValue(string varName, out double value)
+        {
+            value = 0;
+
+            // If the inputField chosen is not valid, exit method and return false.
+            // If the inputField chosen is valid, lookup in Dictionary and get Item1 (the control being used)
+            if (!inputFields.TryGetValue(varName, out var field))
+                return false;
+
+            Control control = field.Item1;
+
+            if (control is TextBox txt)
+            {
+                return double.TryParse(txt.Text, out value);
+            }
+
+            if (control is ComboBox cmb)
+            {
+                if (varName == "RecipeDuration" && cmb.SelectedItem is GrindingRecipeItem item)
+                {
+                    value = item.RecipeDuration;
+                    return true;
+                }
+            }
+            return false;
         }
 
 
@@ -204,7 +230,7 @@ namespace Create_Mod_Calculator_App
 
         private void cmbRecipeDuration_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            txtRPM_TextChanged(sender, e);
         }
     }
 }
