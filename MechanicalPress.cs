@@ -41,7 +41,8 @@ namespace Create_Mod_Calculator_App
         {
             double rpm = inputs["RPM"];
             double clamped = Clamp(rpm / 512.0, 0, 1);
-            return (1 + clamped * 59) / 12;
+            double lerped = 1 + 59 * clamped;
+            return lerped/12;
         }
 
         private double CalculateRPM(Dictionary<string, double> inputs)

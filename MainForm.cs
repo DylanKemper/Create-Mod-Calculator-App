@@ -90,11 +90,11 @@ namespace Create_Mod_Calculator_App
 
         private void setupWindow()
         {
-            this.Text = "Create Mod Calculator";
-            this.ClientSize = new Size(500, 550);
-            this.FormBorderStyle = FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
-            this.StartPosition = FormStartPosition.CenterScreen;
+            Text = "Create Mod Calculator";
+            ClientSize = new Size(500, 550);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
+            StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void txtItemsPerSec_TextChanged(object sender, EventArgs e)
@@ -230,7 +230,7 @@ namespace Create_Mod_Calculator_App
 
         private void cmbRecipeDuration_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtRPM_TextChanged(sender, e);
+            txtRPM_TextChanged(sender, e);  // Not ideal. Can cause invalid input.
         }
     }
 }
