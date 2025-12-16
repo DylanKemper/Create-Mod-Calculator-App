@@ -40,6 +40,7 @@ namespace Create_Mod_Calculator_App
         private double CalculateItemsPerSec(Dictionary<string, double> inputs)
         {
             double rpm = inputs["RPM"];
+            if (rpm <= 0) return 0;
             double clamped = Clamp(rpm / 512.0, 0, 1);
             double lerped = 1 + 59 * clamped;
             return lerped/12;

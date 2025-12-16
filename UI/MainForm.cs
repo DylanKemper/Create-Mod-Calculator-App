@@ -59,7 +59,11 @@ namespace Create_Mod_Calculator_App
 
         private void populateRecipeDurationsComboBox()
         {
-            string jsonPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "recipe_durations.json");
+            string jsonPath = Path.Combine(
+            AppDomain.CurrentDomain.BaseDirectory,
+                "Data",
+                "recipe_durations.json"
+            );
             string jsonContent = File.ReadAllText(jsonPath);
             var grindingRecipeDatabase = JsonConvert.DeserializeObject<GrindingRecipeDatabase>(jsonContent);
             var grindingRecipes = new List<GrindingRecipeItem>();

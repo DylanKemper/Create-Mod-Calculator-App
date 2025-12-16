@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Create_Mod_Calculator_App
 {
-    internal class CrushingWheel : MachineBase
+    public class CrushingWheel : MachineBase
     {
         public override string Name => "CrushingWheel";
 
