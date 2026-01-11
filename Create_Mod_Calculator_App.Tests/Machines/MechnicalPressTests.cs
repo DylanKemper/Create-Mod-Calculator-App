@@ -19,7 +19,7 @@ namespace Create_Mod_Calculator_App
 
         // Min should return 0 items/sec
         [TestMethod]
-        public void Solve_0RPM_Returns_0_ItemsPerSec()
+        public void Solve_0RPM_Returns_0ItemsPerSec()
         {
             var inputs = new Dictionary<string, double> { { "RPM", 0 } };
 

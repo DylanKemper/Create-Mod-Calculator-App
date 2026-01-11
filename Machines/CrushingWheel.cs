@@ -26,6 +26,7 @@ namespace Create_Mod_Calculator_App
         private double CalculateItemsPerSec(Dictionary<string, double> inputs)
         {
             double rpm = inputs["RPM"];
+            if (rpm == 0) return 0;
             double stackSize = inputs["StackSize"];
             double recipeDuration = inputs["RecipeDuration"];
             double inputDelay = inputs["InputDelay"];

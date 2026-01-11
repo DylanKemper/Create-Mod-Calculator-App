@@ -236,5 +236,10 @@ namespace Create_Mod_Calculator_App
         {
             txtRPM_TextChanged(sender, e);  // Not ideal. Can cause invalid input.
         }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

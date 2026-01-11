@@ -212,6 +212,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
             this.Text = "Create Mod Calculator";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.pnlInput.ResumeLayout(false);
             this.pnlInput.PerformLayout();
             this.ResumeLayout(false);
