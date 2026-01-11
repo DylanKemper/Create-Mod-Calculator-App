@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Create_Mod_Calculator_App
 {
-    internal class CrushingWheel : MachineBase
+    public class CrushingWheel : MachineBase
     {
         public override string Name => "CrushingWheel";
 
@@ -25,19 +25,15 @@ namespace Create_Mod_Calculator_App
 
         private double CalculateItemsPerSec(Dictionary<string, double> inputs)
         {
-            // Read user-provided inputs
             double rpm = inputs["RPM"];
             double stackSize = inputs["StackSize"];
             double recipeDuration = inputs["RecipeDuration"];
             double inputDelay = inputs["InputDelay"];
 
-            // Compute clamp
             double clampedValue = Clamp((0.08 * rpm) / Math.Log(stackSize, 2), 0.25, 20);
 
-            // Calculate ticks per stack
-            double ticksPerStack = Math.Floor((recipeDuration - 20) / clampedValue) + 1 + inputDelay;
+            double ticksPerStack = ((recipeDuration - 20) / clampedValue) + 1 + inputDelay;
 
-            // Convert to items/sec
             double itemsPerSec = (20 * stackSize) / ticksPerStack;
 
             return itemsPerSec;
@@ -63,7 +59,7 @@ namespace Create_Mod_Calculator_App
                 return outputItemsPerSec - itemsPerSec;
             };
 
-            return Math.Ceiling(Brent.FindRoot(func, 0, 256, 1e-6));
+            return Math.Ceiling(Brent.FindRoot(func, 0, 256, 1e-8));
         }
     }
 }

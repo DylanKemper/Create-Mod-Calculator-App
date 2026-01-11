@@ -1,0 +1,122 @@
+﻿{
+  "recipeDurations": {
+    "50": {
+      "items": [
+        "clayBlock",
+        "cactus",
+        "seaPickle",
+        "sugarCane",
+        "azureBluet",
+        "blueOrchid",
+        "fern",
+        "largeFern",
+        "allium",
+        "lilyOfTheValley",
+        "roseBush",
+        "oxeyeDaisy",
+        "poppy",
+        "dandelion",
+        "cornFlower",
+        "witherRose",
+        "orangeTulip",
+        "redTulip",
+        "whiteTulip",
+        "pinkTulip"
+      ]
+    },
+    "70": {
+      "items": [
+        "boneMeal",
+        "cocoBeans",
+        "beetroot"
+      ]
+    },
+    "100": {
+      "items": [
+        "wool",
+        "bone",
+        "inkSack",
+        "charcoal",
+        "coal",
+        "lapisLazuli",
+        "lilac",
+        "peony",
+        "sunflower",
+        "tallGrass",
+        "blazeRod"
+      ]
+    },
+    "150": {
+      "items": [
+        "sandStone",
+        "wheat",
+        "prismarineCrystal",
+        "coalOre",
+        "amethystCluster",
+        "glowstone",
+        "amethystBlock"
+      ]
+    },
+    "200": {
+      "items": [
+        "granite",
+        "terracota",
+        "andesite",
+        "saddle",
+        "horseArmor"
+      ]
+    },
+    "250": {
+      "items": [
+        "calcite",
+        "dripstoneBlock",
+        "cobblestone",
+        "gravel",
+        "copperOre",
+        "zincOre",
+        "ironOre",
+        "goldOre",
+        "redstoneOre",
+        "lapisOre",
+        "netherrack",
+        "crimsite"
+      ]
+    },
+    "350": {
+      "items": [
+        "diorite",
+        "tuff",
+        "diamondOre",
+        "emeraldOre",
+        "deepslateCopperOre",
+        "deepslateZincOre",
+        "deepslateIronOre",
+        "deepslateGoldOre",
+        "deepslateRedstoneOre",
+        "deepslateLapisOre",
+        "netherGoldOre",
+        "netherQuartzOre"
+      ]
+    },
+    "400": {
+      "items": [
+        "rawCopper",
+        "rawIron",
+        "rawGold",
+        "rawZinc"
+      ]
+    },
+    "450": {
+      "items": [
+        "deepslateDiamondOre",
+        "deepslateEmeraldOre"
+      ]
+    },
+    "500": {
+      "items": [
+        "obsidian"
+      ]
+    }
+  },
+  "defaultDuration": 100
+}
