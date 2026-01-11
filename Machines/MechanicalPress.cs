@@ -14,6 +14,8 @@ namespace Create_Mod_Calculator_App
         public override string Name => "MechanicalPress";
         public override string[] RequiredInputs => new[] { "ItemsPerSec", "RPM"};
 
+        public double MinimumItemsPerSec = 1 / 12; 
+
         public override double Solve(string targetVariable, Dictionary<string, double> inputs)
         {
             // Ensure that all input values are relevant to the current machine and that the required input values are present and valid.
@@ -40,7 +42,9 @@ namespace Create_Mod_Calculator_App
         private double CalculateItemsPerSec(Dictionary<string, double> inputs)
         {
             double rpm = inputs["RPM"];
-            if (rpm <= 0) return 0;
+            if (rpm < 0 || rpm > 256)
+                throw new ArgumentOutOfRangeException(nameof(rpm), "RPM must be between 0 and 256");
+            if (rpm == 0) return 0;
             double clamped = Clamp(rpm / 512.0, 0, 1);
             double lerped = 1 + 59 * clamped;
             return lerped/12;
@@ -49,6 +53,7 @@ namespace Create_Mod_Calculator_App
         private double CalculateRPM(Dictionary<string, double> inputs)
         {
             double itemsPerSec = inputs["ItemsPerSec"];
+            if (itemsPerSec <= MinimumItemsPerSec) return 0; 
             Func<double, double> func = (rpm) =>
             {
                 double clamped = Clamp(rpm / 512.0, 0, 1);
